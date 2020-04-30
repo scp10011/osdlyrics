@@ -70,7 +70,7 @@ class NeteaseSource(BaseLyricSourcePlugin):
             raise httplib.HTTPException(status)
 
         parsed = json.loads(content)
-        lyric = parsed['lrc']['lyric']
+        lyric = parsed.get("tlyric", parsed.get("lrc", {})).get("lyric") or "not lyric"
         return lyric
 
 if __name__ == '__main__':
