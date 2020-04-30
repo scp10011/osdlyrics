@@ -17,6 +17,7 @@
  * along with OSD Lyrics.  If not, see <http://www.gnu.org/licenses/>. 
  */
 #include "ol_commands.h"
+#include "ol_app.h"
 #include "ol_config_proxy.h"
 #include "ol_debug.h"
 
@@ -36,4 +37,16 @@ ol_show_hide ()
   ol_assert (config != NULL);
   ol_config_proxy_set_bool (config, "General/visible",
                             !ol_config_proxy_get_bool (config, "General/visible"));
+}
+
+void
+ol_advance_lrc ()
+{
+    ol_app_adjust_lyric_offset (-200);
+}
+
+void
+ol_delay_lrc ()
+{
+    ol_app_adjust_lyric_offset (200);
 }

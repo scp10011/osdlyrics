@@ -41,4 +41,17 @@ void ol_osd_lock_unlock ();
  */
 void ol_show_hide ();
 
+/**
+ * @brief lyrics 200ms advance
+ *
+ */
+void ol_advance_lrc ();
+
+/**
+ * @brief lyrics 200ms delay
+ *
+ */
+void ol_delay_lrc ();
+
+
 #endif /* _OL_COMMANDS_H_ */

@@ -29,7 +29,6 @@ static void
 ol_hide_accel (gpointer userdata)
 {
 }
-  
 
 void
 ol_keybinding_init ()
@@ -51,8 +50,24 @@ ol_keybinding_init ()
   gtk_accel_group_connect_by_path (accel,
                                    "<OSD Lyrics>/Hide",
                                    hide_closure);
+  gtk_accel_map_add_entry ("<OSD Lyrics>/Advance",
+                           gdk_keyval_from_name ("o"),
+                           GDK_CONTROL_MASK | GDK_MOD1_MASK | GDK_SHIFT_MASK);
+  gtk_accel_group_connect_by_path (accel,
+                                   "<OSD Lyrics>/Advance",
+                                   hide_closure);
+
+  gtk_accel_map_add_entry ("<OSD Lyrics>/Delay",
+                           gdk_keyval_from_name ("p"),
+                           GDK_CONTROL_MASK | GDK_MOD1_MASK | GDK_SHIFT_MASK);
+  gtk_accel_group_connect_by_path (accel,
+                                   "<OSD Lyrics>/Delay",
+                                   hide_closure);
+
   ol_keybinder_bind ("<Ctrl><Shift>H", ol_show_hide, NULL);
   ol_keybinder_bind ("<Ctrl><Shift>L", ol_osd_lock_unlock, NULL);
+  ol_keybinder_bind ("<Ctrl><Alt><Shift>O", ol_advance_lrc, NULL);
+  ol_keybinder_bind ("<Ctrl><Alt><Shift>P", ol_delay_lrc, NULL);
 }
 
 GtkAccelGroup*
